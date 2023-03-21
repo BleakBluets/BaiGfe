@@ -40,9 +40,6 @@ Open `app.js` found in :
 
 1. Skip displaying login dialog
 
-With the previous bypass method, an empty dialog displays with an error message
-stating that it failed to load. This replacement skips displaying that dialog.
-
 Find:
 
 ``` JavaScript
