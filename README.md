@@ -1,5 +1,5 @@
 # BaiGfe
-Remove Mandatory Login of Geforce Experience - [support: v3.14.x to v3.20.x(current)]
+Remove Mandatory Login of Geforce Experience - [support: v3.14.x to v3.27.x(current)]
 # How to Remove Mandatory Login  
 
 make a backup of every files you edit !
@@ -31,69 +31,89 @@ Set-ExecutionPolicy RemoteSigned
 &#x200B;
 
 # Manual way :  
-NOTE: some of the code below might change (function letters), just compare with one of the previously uploaded app.js ;)  
 
-use [http://jsbeautifier.org/](http://jsbeautifier.org/) on app.js found in :  
+Open `app.js` found in :  
 
     C:\Program Files\NVIDIA Corporation\NVIDIA GeForce Experience\www\
 
 &#x200B;
 
-1. Nullify login (in app.js)  
+1. Skip displaying login dialog
 
-\- find :  
+With the previous bypass method, an empty dialog displays with an error message
+stating that it failed to load. This replacement skips displaying that dialog.
 
-    if (e.domains.list.indexOf(n) > -1) return !0
+Find:
 
-\- replace by :  
+``` JavaScript
+.selectView()}
+```
 
-    if (e.domains.list.indexOf(n) > -1) return y.handleLoggedIn(e), !0
+Replace:
 
-Now let's add some fake infos, find :
-  
-            }, y.isLeftPaneVisible = function() {
-                return !("choose" === y.nvActiveAuthView)
-            }
-
-And replace with this : 
-
-            }, y.isLeftPaneVisible = function() {
-                return !("choose" === y.nvActiveAuthView)
-            }, y.handleLoggedIn({
-                    sessionToken: "dummySessionToken",
-                    userToken: "dummyUserToken",
-                    user: {
-                        core: {
-                            displayName: "Anonymous",
-                            primaryEmailVerified: true
-                        }
-                    }
-                });
+``` JavaScript
+}
+```
 
 &#x200B;
 
-2. Force-enable ShadowPlay and Share buttons :
+2. Spoof email verification status
 
-\-  find and replace
+Find:
 
-    X.isShareSupported = !1, X.isShareButtonClicked = !1
+``` JavaScript
+isLeftPaneVisible=function()
+```
 
-by
+Replace:
 
-    X.isShareSupported = !0, X.isShareButtonClicked = !0
-
-To make the shadowplay & share buttons show on the main GFE screen
+``` JavaScript
+handleLoggedIn({sessionToken:"1",userToken:"1",user:{core:{displayName:"",primaryEmailVerified:!0}}});
+```
 
 &#x200B;
 
-\- Optional (might help in some case where user previously was logged in) find   
+3. Skip email verification prompt for previously logged-in accounts
 
+Find:
 
-    E.info("automatically resent verification email"), u.endActionAsync(r, "EMAIL_NOT_VERIFIED"), y.showEmailVerification(e)  
+``` JavaScript
+domains.list){
+```
 
-\-  and remove  
+Replace:
 
-    , y.showEmailVerification(e)
+``` JavaScript
+domains.list){return!0}else{return!0}{
+```
+
+Find:
+
+``` JavaScript
+showEmailVerification=
+```
+
+Replace:
+
+``` JavaScript
+showEmailVerification=function(){},
+```
+
+&#x200B;
+
+4. (Optional) Force-enable in-game overlay button (ShadowPlay)
+
+Find every instance of:
+
+``` JavaScript
+isShareSupported=
+```
+
+Replace each instance with:
+
+``` JavaScript
+isShareSupported=!0,
+```
 
 # How to Block Data Collection / Telemetry (block all or keep Games Optimisations)
 
