@@ -1,10 +1,10 @@
 # BaiGfe
 
-Remove Mandatory Login of GeForce Experience - v3.27.0.112
+Remove mandatory login for GeForce Experience - v3.27.0.112
 
 ## How to Remove Mandatory Login
 
-There are three methods for modifying the target file. Before replacing or
+There are two methods for modifying the target file. Before replacing or
 modifying this file, create a backup.
 
 In File Explorer, go to:
@@ -20,18 +20,7 @@ Backup `app.js` by creating a copy and renaming it something like
 
 Download [pre-patched app.js](app.js) and move it into the `www` folder.
 
-### Method 2: Auto-install pre-patched file
-
-1. Download [pre-patched app.js](app.js) and the [installer
-   script](Install-Fix.ps1)
-2. Run PowerShell as administrator, then run this PowerShell command:
-    ``` PowerShell
-    Set-ExecutionPolicy RemoteSigned
-    ```
-3. Type "A" then hit enter
-4. Right-click Install-Fix.ps1 and choose Run as Administrator
-
-### Method 3: Manually patch file
+### Method 2: Manually patch file
 
 1. Open `app.js` in a text editor that has find-and-replace functionality
 (usually activated with `Ctrl`+`F` by default)
@@ -95,8 +84,7 @@ Download [pre-patched app.js](app.js) and move it into the `www` folder.
     - (copy-paste the file on your desktop to edit, copy back to "etc" folder
       if you have permission errors)
 
-2. Add these lines to the bottom of the file only from one of the lists, not
-   both
+2. Add these lines to the bottom of the file only from one of the lists
     - Full blocklist
         : blocks telemetry / driver & GFE updates
     - Lite blocklist
