@@ -1,6 +1,8 @@
 # BaiGfe
 
-Remove mandatory login for GeForce Experience - v3.27.0.112
+Remove mandatory login for GeForce Experience
+
+Works as of version 3.27.0.120
 
 ## How to Remove Mandatory Login
 
