@@ -1,4 +1,4 @@
-# BaiGfe
+# Bypass GFE Login
 
 Remove mandatory login for GeForce Experience
 
