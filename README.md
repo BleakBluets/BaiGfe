@@ -2,7 +2,7 @@
 
 Remove mandatory login for GeForce Experience
 
-Works as of version 3.28.0.412
+Works as of version 3.28.0.417
 
 ## How to Remove Mandatory Login
 
