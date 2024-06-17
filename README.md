@@ -52,7 +52,7 @@ Download [pre-patched app.js](app.js) and move it into the `www` folder.
         ``` JavaScript
         domains.list){
         ```
-        - Replace with:
+    - Replace with:
         ``` JavaScript
         domains.list){return!0}else{return!0}{
         ```
